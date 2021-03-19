@@ -1,0 +1,14 @@
+ <!-- should have a navbar with search bar, Register, Login, Home, Products dropdown, Cart, Account -->
+ <!-- Login, Register should be modal with email, password and email, password, confirm password as inputs respectively and inputs should be validated -->
+ <!-- Products, Account, Home,SignOut tabs should be available only after successful login and Login and Register should not be present after successful login-->
+
+<p>Menu bar</p>
+
+<div  *ngIf="!isLoggedIn" >
+    <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+    <input type="text" formControlName="email">
+    <input type="password" formControlName="password">
+    <button type="submit" >Submit</button>
+</form>
+
+</div>
