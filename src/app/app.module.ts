@@ -11,7 +11,7 @@ import { PagesModule } from './pages/pages.module';
 import { ProductsComponent } from './pages/products/products.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BsDropdownModule,BsDropdownConfig  } from 'ngx-bootstrap/dropdown';
 
 // import all necessary modules
 @NgModule({
@@ -30,9 +30,10 @@ import { HttpClientModule } from '@angular/common/http';
     PagesModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BsDropdownModule.forRoot()
   ],
-  providers: [],
+  providers: [BsDropdownConfig],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
