@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent} from './pages/home/home.component'
 import { HeaderComponent} from './pages/header/header.component'
 import { FooterComponent} from './pages/footer/footer.component'
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PagesModule } from './pages/pages.module';
 import { ProductsComponent } from './pages/products/products.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 
 // import all necessary modules
@@ -25,7 +27,10 @@ import { ProductsComponent } from './pages/products/products.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    PagesModule
+    PagesModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
