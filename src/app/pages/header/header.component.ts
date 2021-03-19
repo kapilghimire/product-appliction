@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
 
   // Function to check Login is successful and change tabs in the header using sessionStorage item 'token'
   loggedInCheck() {
+    debugger;
     if (sessionStorage.getItem('token') !== null) {
       this.isLoggedIn = true;
     } else {
@@ -81,6 +82,7 @@ export class HeaderComponent implements OnInit {
     debugger;
     this.loginService.login(this.model).subscribe(res=>{
       console.log(res);
+      this.isLoggedIn=true;
     },error=>{
       console.log(error);
     })
