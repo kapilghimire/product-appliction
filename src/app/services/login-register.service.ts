@@ -16,6 +16,11 @@ export class LoginRegisterService {
   login(payload: object): Observable<any> {
 return this.http.post(this.baseUrl+'/auth/login',payload);
    // return of({"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"});
+
+return this.http.post(this.baseUrl+'login',payload);
+    const body= JSON.stringify(payload);  
+      return this.http.post("http://localhost:8761/auth/login",body);
+    //return of({"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"});
   }
 
   // Function to send register data to the backend
