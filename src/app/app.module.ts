@@ -13,6 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/authinterceptor';
 import { TokenService } from './services/token.service';
 import { Router } from '@angular/router';
+import { AccountComponent } from './pages/account/account.component';
 
 
 // import all necessary modules
@@ -22,7 +23,8 @@ import { Router } from '@angular/router';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    ProductsComponent 
+    ProductsComponent,
+    AccountComponent
     
   ],
   imports: [
@@ -40,7 +42,6 @@ import { Router } from '@angular/router';
       multi: true,
       deps: [TokenService,Router]
     }
-
   ],
   bootstrap: [AppComponent],
 })
