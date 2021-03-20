@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   user: Customer = {};
   hide;
 
+  model:any={};
   loginForm: FormGroup;
   registerForm: FormGroup;
   searchForm: FormGroup;
@@ -37,6 +38,7 @@ export class HeaderComponent implements OnInit {
 
   // Function to check Login is successful and change tabs in the header using sessionStorage item 'token'
   loggedInCheck() {
+    debugger;
     if (sessionStorage.getItem('token') !== null) {
       this.isLoggedIn = true;
     } else {
@@ -77,12 +79,20 @@ export class HeaderComponent implements OnInit {
   }
   
   loginSubmit(){
+    debugger;
+    this.loginService.login(this.model).subscribe(res=>{
+      console.log(res);
+      this.isLoggedIn=true;
+    },error=>{
+      console.log(error);
+    })
     let userCredentials={
       "email":"bruno@email.com",
       "password":"bruno"
     }
 
     this.logIn(userCredentials);
+    console.log(this.model);
   }
 
   //  Function to get user's credential and send to backend for authentication token

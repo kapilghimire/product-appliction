@@ -2,17 +2,40 @@
  <!-- Login, Register should be modal with email, password and email, password, confirm password as inputs respectively and inputs should be validated -->
  <!-- Products, Account, Home,SignOut tabs should be available only after successful login and Login and Register should not be present after successful login-->
 
-<p>Menu bar</p>
 
-<div  *ngIf="!isLoggedIn" >
-    <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
-    <input type="text" formControlName="email">
-    <input type="password" formControlName="password">
-    <button type="submit" >Submit</button>
-</form>
-
-</div>
-
-<div *ngIf="isLoggedIn">
-    <div>Product Cauresol</div>
-</div>
+ <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+   
+      <div class="container">
+        <a class="navbar-brand" href="#">Organic Shop</a>
+          <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="isLoggedIn">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Product</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#" >Cart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="#" >Account</a>
+              </li>
+            
+          </ul>
+          <div class="dropdown" *ngIf="isLoggedIn" dropdown>
+            <a  class="dropdown-toggle text-light" dropdownToggle>Welcome User</a>
+            <div class="dropdown-menu" *dropdownMenu>
+              <a  class="dropdown-item">Edit Profile</a>
+              <div class="dropdown-divider"></div>
+              <a  class="dropdown-item" (click)="signOut()">Logout</a>
+            </div>
+          </div>
+          <form *ngIf="!isLoggedIn" #loginForm="ngForm" class="d-flex"  (ngSubmit)="loginSubmit()" autocomplete="off">
+            <input [(ngModel)]="model.email"  name="username" class="form-control me-2" type="text" placeholder="Username" >
+            <input [(ngModel)]="model.password"  name="password" class="form-control me-2" type="password" placeholder="Password" >
+            <button class="btn btn-outline-success" type="submit">Login</button>
+          </form>
+        </div>
+    
+  </nav> 
+ 
