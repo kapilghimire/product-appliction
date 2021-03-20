@@ -9,6 +9,8 @@ import { FooterComponent} from './pages/footer/footer.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { PagesModule } from './pages/pages.module';
 import { ProductsComponent } from './pages/products/products.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/authinterceptor';
 
 
 // import all necessary modules
@@ -23,11 +25,20 @@ import { ProductsComponent } from './pages/products/products.component';
   ],
   imports: [
     BrowserModule,
+     // import HttpClientModule after BrowserModule.
+     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     PagesModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

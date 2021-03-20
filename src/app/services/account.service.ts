@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 
 import { Customer } from '../modals/customer';
@@ -17,7 +17,11 @@ export class AccountService {
   // and error handling using erro-handler.ts
   getAccountDetails(payload: string): Observable<Customer> {
 
-    return null;
+    return of({"id": "1",
+    "firstName": "bruno",
+    "lastName": "mars",
+    "email": "bruno@email.com",
+    "password": "bruno"});
   }
 
   // Function to update or create new User's account details with JWT authentication token
