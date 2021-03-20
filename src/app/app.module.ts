@@ -11,6 +11,7 @@ import { PagesModule } from './pages/pages.module';
 import { ProductsComponent } from './pages/products/products.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/authinterceptor';
+import { TokenService } from './services/token.service';
 
 
 // import all necessary modules
@@ -31,11 +32,12 @@ import { AuthInterceptor } from './interceptors/authinterceptor';
     ReactiveFormsModule,
     PagesModule
   ],
-  providers: [
+  providers: [ 
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
+      deps: [TokenService]
     }
 
   ],

@@ -9,7 +9,7 @@ import { TokenService } from "../services/token.service";
    providedIn: 'root'
  })
 export class AuthInterceptor implements HttpInterceptor{
-    constructor (){}
+    constructor (private tokenService: TokenService){}
 
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -22,8 +22,10 @@ export class AuthInterceptor implements HttpInterceptor{
    //   }
     // Clone the request and replace the original headers with
     // cloned headers, updated with the authorization.
-   const   authToken="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJydW5vQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoiYnJ1bm8iLCJpYXQiOjE2MTYyMDI1MjAsImV4cCI6MTYxNjIyMDUyMH0.JsyeMTW6k08WCjf6C2GqkoD_pHBn6vZTRocdeekQF8M";
-    const authReq = req.clone({
+  // const   authToken="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJydW5vQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoiYnJ1bm8iLCJpYXQiOjE2MTYyMDI1MjAsImV4cCI6MTYxNjIyMDUyMH0.JsyeMTW6k08WCjf6C2GqkoD_pHBn6vZTRocdeekQF8M";
+    
+    const authToken = this.tokenService.getUserAuthenticationToken();
+  const authReq = req.clone({
       setHeaders: {
         Authorization: `Bearer ${authToken}`
       }
