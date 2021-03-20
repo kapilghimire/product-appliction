@@ -22,7 +22,7 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     this.getUserDetails();
-    this.getOrders();
+   // this.getOrders();
   }
 
   // Function to get details of user from sessionStorage item 'user'

@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    //this.routeAnalyser();
+    this.routeAnalyser();
   }
 
   // Function to read the route and display data based on the route using activated route

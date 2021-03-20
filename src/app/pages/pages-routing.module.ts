@@ -9,6 +9,7 @@ import { AccountComponent } from './account/account.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'account', component: AccountComponent},
   // To get all products
   // Should have RouteGuard
   {

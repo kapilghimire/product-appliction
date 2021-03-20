@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../modals/product';
@@ -7,13 +8,13 @@ import { Product } from '../modals/product';
 })
 // Use 'API_URL' from environment.ts
 export class ProductService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   // Function to get all products available with JWT authentication token
   // and error handling using erro-handler.ts
   getAllProducts(): Observable<Product[]> {
 
-    return null;
+    return this.http.get<Product[]>("http://localhost:8761/products")
   }
 
   // Function to get all products of particular category with JWT authentication token
