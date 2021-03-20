@@ -23,9 +23,9 @@
             
           </ul>
           <div class="dropdown" *ngIf="isLoggedIn" dropdown>
-            <a  class="dropdown-toggle text-light" dropdownToggle>Welcome User</a>
+            <a  class="dropdown-toggle text-light" dropdownToggle>Welcome {{getLoggedInUserName()}}</a>
             <div class="dropdown-menu  mt-3" *dropdownMenu>
-              <a  class="dropdown-item">Edit Profile</a>
+              <a  [routerLink]="['/account']" class="dropdown-item">Edit Profile</a>
               <div class="dropdown-divider"></div>
               <a  class="dropdown-item" (click)="signOut()">Logout</a>
             </div>

@@ -139,4 +139,11 @@ export class HeaderComponent implements OnInit {
     $(document.body).removeClass('modal-open');
     $('.modal-backdrop').remove();
   }
+
+  getLoggedInUserName(){
+    var userInfo =JSON.parse( sessionStorage.getItem("user"));
+
+    return userInfo.firstName;
+
+  }
 }
