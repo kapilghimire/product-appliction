@@ -12,6 +12,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/authinterceptor';
 import { TokenService } from './services/token.service';
+import { Router } from '@angular/router';
 
 
 // import all necessary modules
@@ -37,7 +38,7 @@ import { TokenService } from './services/token.service';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
-      deps: [TokenService]
+      deps: [TokenService,Router]
     }
 
   ],
