@@ -18,6 +18,8 @@ import { AuthInterceptor } from './interceptors/authinterceptor';
 import { TokenService } from './services/token.service';
 import { Router } from '@angular/router';
 import { AccountComponent } from './pages/account/account.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarouselConfig, CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 // import all necessary modules
@@ -41,11 +43,14 @@ import { AccountComponent } from './pages/account/account.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    NgbModule,
+    CarouselModule.forRoot()
   ],
 
   providers: [ 
   BsDropdownConfig,
+  CarouselConfig,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
