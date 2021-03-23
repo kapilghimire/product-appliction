@@ -21,7 +21,7 @@ import { AccountComponent } from './pages/account/account.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselConfig, CarouselModule } from 'ngx-bootstrap/carousel';
 
-
+import { AccordionConfig, AccordionModule } from 'ngx-bootstrap/accordion';
 
 // import all necessary modules
 @NgModule({
@@ -46,12 +46,14 @@ import { CarouselConfig, CarouselModule } from 'ngx-bootstrap/carousel';
     HttpClientModule,
     BsDropdownModule.forRoot(),
     NgbModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    AccordionModule.forRoot()
   ],
 
   providers: [ 
   BsDropdownConfig,
   CarouselConfig,
+  AccordionConfig,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

@@ -13,7 +13,8 @@ import { CartProduct } from 'src/app/modals/cartProduct';
 // Class to display the products
 export class ProductsComponent implements OnInit {
   items: Product[];
-
+  info: any;
+  count=1;
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
@@ -23,6 +24,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.routeAnalyser();
   }
+
 
   // Function to read the route and display data based on the route using activated route
   // Searching logic has to be implemented here
@@ -59,7 +61,14 @@ export class ProductsComponent implements OnInit {
 
   // Function to change quantity when change in the Ui
   changeQuantity(event, i) {
-    this.items[i].quantity = event.target.value;
+    debugger;
+    if(event.target.value==undefined ||  event.target.value==""){
+      this.items[i].quantity =1;
+    }
+    else{
+      this.items[i].quantity = event.target.value;
+    }
+    
   }
 
   // Function to add the product to cart using a sessionStorage item 'cart'

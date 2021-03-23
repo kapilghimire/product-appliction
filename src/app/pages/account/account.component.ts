@@ -14,6 +14,7 @@ import { AccountService } from 'src/app/services/account.service';
 export class AccountComponent implements OnInit {
   user: Customer = {};
   orders: Order[];
+  isLoggedIn: boolean=false;
 
   constructor(
     private orderService: OrderService,
@@ -22,7 +23,8 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     this.getUserDetails();
-   // this.getOrders();
+    this.getOrders();
+    this.loggedInCheck();
   }
 
   // Function to get details of user from sessionStorage item 'user'
@@ -32,14 +34,24 @@ export class AccountComponent implements OnInit {
 
   // Function to update changes made by user to backend
   update() {
+    debugger;
     sessionStorage.setItem('user', JSON.stringify(this.user));
     this.accountService.updateAccountDetails(this.user).subscribe();
   }
 
   // Function to get all orders of the user from backend
   getOrders() {
+    debugger;
     this.orderService.getOrdersByCustomer(this.user.id).subscribe((data) => {
       this.orders = data;
     });
+  }
+  loggedInCheck() {
+    debugger;
+    if (sessionStorage.getItem('token') !== null) {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+    }
   }
 }

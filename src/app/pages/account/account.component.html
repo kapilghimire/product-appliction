@@ -3,9 +3,113 @@
 <!-- should have a <section> with bootstrap accordian to display User Details, Previous Orders -->
 <!-- use ngModel to double bind user values for updation-->
 
+
+<div class="container mt-5" *ngIf="isLoggedIn" >
+<accordion [isAnimated]="true">
+    <accordion-group heading="UserDetails">
+        <div class="container register">
+            <div class="row">
+                <div class="col-md-3 register-left">
+                    <img src="assets/images/Kiwi.jpeg" alt=""/>
+                    <h3>Welcome</h3>
+                
+                </div>
+                <div class="col-md-9 register-right">
+ 
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <h3 class="register-heading">Profile Details</h3>
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" [(ngModel)]="user.firstName" placeholder="First Name *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" [(ngModel)]="user.lastName" placeholder="Last Name *" value="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" [(ngModel)]="user.email" placeholder="Your Email *" value="" />
+                                    </div>
+                                     <button type="button" class="btn btn-success" (click)="update()">
+                                    <span class="glyphicon glyphicon-update"></span> Update
+                                     </button>
+                                    <!-- <input type="submit" class="btnUpdate"  value="Update"/> -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </accordion-group>
+    <accordion-group heading="Previous Orders">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                    <table class="table table-hover" *ngFor="let order of orders;let i=index;">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Total</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pro of order.cartProducts">
+                                <td class="col-sm-8 col-md-6">
+                                <div class="media">
+                                    <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a href="#">{{pro.productName}}</a></h4>
+                                        <span>Status: </span><span class="text-success"><strong>{{order.status}}</strong></span>
+                                    </div>
+                                </div></td>
+                                <td class="col-sm-1 col-md-1" style="text-align: center">
+                                <input type="quantity" class="form-control" id="quantity" value="{{pro.quantity}}">
+                                </td>
+                                <td class="col-sm-1 col-md-1 text-center"><strong>{{'Rs.'+pro.price}}</strong></td>
+                                <td class="col-sm-1 col-md-1 text-center"><strong>{{'Rs.'+pro.price*pro.quantity}}</strong></td>
+                                <td class="col-sm-1 col-md-1">
+                                <!-- <button type="button" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-remove"></span> Remove
+                                </button></td> -->
+                            </tr>
+                           
+                                                 
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td><h3>Total</h3></td>
+                                <td class="text-right"><h3><strong>{{'Rs.'+order.totalBill}}</strong></h3></td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>
+                                <!-- <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                </button></td>
+                                <td>
+                                <button type="button" class="btn btn-success">
+                                    Checkout <span class="glyphicon glyphicon-play"></span>
+                                </button></td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+     
+    </accordion-group>
+    
+  </accordion>
+</div>
 <!-- should have a <app-footer> -->
-
-
-    <div>{{user.firstName}}</div>
-    <div>{{user.lastName}}</div>
-    <div>{{user.email}}</div>
